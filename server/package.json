@@ -1,13 +1,8 @@
 {
   "name": "meshlive-token-server",
   "version": "1.0.0",
-  "description": "Local development Agora RTC token server for MeshLive",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js"
-  },
+  "description": "Agora RTC token server for MeshLive",
   "dependencies": {
-    "agora-token": "^2.0.7",
-    "dotenv": "^16.4.7"
+    "agora-token": "^2.0.7"
   }
 }

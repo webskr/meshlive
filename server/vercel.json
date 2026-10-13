@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "routes": [
+    {
+      "src": "/token",
+      "dest": "/api/token.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/token.js"
+    }
+  ]
+}

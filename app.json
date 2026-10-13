@@ -1,15 +1,42 @@
 {
   "expo": {
     "name": "MeshLive",
-    "slug": "MeshLive",
+    "slug": "meshlive",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "androidStatusBar": {
+      "barStyle": "light-content",
+      "backgroundColor": "#0f172a",
+      "translucent": false
+    },
+    "plugins": [
+      [
+        "expo-navigation-bar",
+        {
+          "backgroundColor": "#0f172a",
+          "style": "light"
+        }
+      ]
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "MeshLive needs camera access for live video calling.",
+        "NSMicrophoneUsageDescription": "MeshLive needs microphone access for live audio calling."
+      }
     },
     "android": {
+      "package": "com.meshlive.app",
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS",
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.ACCESS_WIFI_STATE"
+      ],
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/android-icon-foreground.png",

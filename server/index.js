@@ -1,4 +1,4 @@
-const { RtcTokenBuilder, Role } = require('./lib/RtcTokenBuilder');
+const { RtcTokenBuilder, RtcRole } = require('agora-token');
 
 module.exports = (req, res) => {
   // CORS Headers
@@ -17,7 +17,7 @@ module.exports = (req, res) => {
     return res.status(500).json({ error: 'Agora credentials not set in environment variables' });
   }
 
-  const { channel, uid } = req.query;
+  const { channel, uid } = req.query || {};
 
   // Root health check
   if (!channel) {
@@ -39,7 +39,8 @@ module.exports = (req, res) => {
       APP_CERTIFICATE,
       channel,
       numericUid,
-      Role.PUBLISHER,
+      RtcRole.PUBLISHER,
+      expireTimeInSeconds,
       privilegeExpiredTs
     );
 

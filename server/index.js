@@ -1,4 +1,4 @@
-const { RtcTokenBuilder, RtcRole } = require('agora-token');
+const { RtcTokenBuilder, Role } = require('./lib/RtcTokenBuilder');
 
 module.exports = (req, res) => {
   // CORS Headers
@@ -17,19 +17,18 @@ module.exports = (req, res) => {
     return res.status(500).json({ error: 'Agora credentials not set in environment variables' });
   }
 
-  // Handle health check / root ping
-  if (req.url === '/' && !req.query.channel) {
-    return res.status(200).json({ status: 'ok', service: 'MeshLive Agora Token Server' });
-  }
-
   const { channel, uid } = req.query;
 
+  // Root health check
   if (!channel) {
-    return res.status(400).json({ error: 'channel query parameter is required' });
+    return res.status(200).json({
+      status: 'ok',
+      service: 'MeshLive Agora Token Server',
+      message: 'Provide ?channel=<channelName>&uid=<numericUid> to generate a token',
+    });
   }
 
   const numericUid = uid ? parseInt(uid, 10) : 0;
-  const role = RtcRole.PUBLISHER;
   const expireTimeInSeconds = 3600;
   const currentTimestamp = Math.floor(Date.now() / 1000);
   const privilegeExpiredTs = currentTimestamp + expireTimeInSeconds;
@@ -40,8 +39,7 @@ module.exports = (req, res) => {
       APP_CERTIFICATE,
       channel,
       numericUid,
-      role,
-      expireTimeInSeconds,
+      Role.PUBLISHER,
       privilegeExpiredTs
     );
 

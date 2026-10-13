@@ -2,6 +2,7 @@
   "name": "meshlive-token-server",
   "version": "1.0.0",
   "description": "Agora RTC token server for MeshLive",
+  "main": "index.js",
   "dependencies": {
     "agora-token": "^2.0.7"
   }

@@ -7,7 +7,7 @@ export const APP_CONFIG = {
 export const AGORA_CONFIG = {
   APP_ID: '84bfc3f70aac4657a1c427fd5257bcb5',
   // Using localhost:8080 with 'adb reverse tcp:8080 tcp:8080' works on physical USB devices & emulators
-  DEFAULT_TOKEN_SERVER_URL: 'http://localhost:8080/token',
+  DEFAULT_TOKEN_SERVER_URL: 'https://meshlive-server.vercel.app/api/token',
   TOKEN_EXPIRY_SECONDS: 3600,
 };
 
